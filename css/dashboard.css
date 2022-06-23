@@ -1,0 +1,97 @@
+    body{
+        font-family: 'poppins';
+    }
+    
+    
+    .nav-container{
+    background-color: #1f1f1f;
+	padding: 10px 2%;
+	display: flex;
+	justify-content: space-between;
+    }
+
+
+
+	li p {
+		color: #999;
+	}
+    
+	.header-elements {
+		display: flex;
+		justify-content: space-evenly;
+        align-items: center;
+	}
+	.header-elements li {
+		list-style: none;
+		text-align: center;
+	}
+	.live {
+		padding: 5px 20px;
+	}
+	.greenDot {
+		color: green;
+	}
+	.connect {
+		font-size: 12px;
+		font-weight: bold;
+	}
+	.delay {
+		font-size: 12px;
+		font-weight: bold;
+		color: #f0a033;
+	}
+
+
+
+	.search {
+		border: 1px solid white;
+		padding: 5px 10px;
+		display: flex;
+		gap: 10px;
+		border-radius: 3px;
+	}
+	.icon {
+		font-size: 20px;
+		color: #999;
+	}
+	.search-input {
+		border: none;
+		background: none;
+		font-size: 16px;
+		color: #999;
+		font-size: 16px;
+		text-transform: uppercase;
+	}
+	.search-input:focus {
+		outline: none;
+		border: none;
+	}
+	.search-input::placeholder {
+		/* Recent browsers */
+		text-transform: none;
+	}
+
+
+	.open {
+		display: flex;
+		gap: 10px;
+		margin-top: 5px;
+		margin-right: 10px;
+	}
+	.hourglass {
+		font-size: 16px;
+		margin-top: 8px;
+		color: #f0a033;
+	}
+	.time-container {
+		font-size: 12px;
+	}
+	.time {
+		color: #f0a033;
+	}
+	.link {
+		border-left: 1px solid black;
+		padding: 0 10px;
+		font-size: 14px;
+		font-weight: bold;
+	}
