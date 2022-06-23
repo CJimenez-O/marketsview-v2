@@ -2,9 +2,15 @@
         margin: 0;
         padding: 0;
     }
+
+    html { 
+        height:100%;
+    }
+
     body{
+        min-height:100%;
         font-family: 'poppins';
-        background-color: #1f1f1f;
+        background-color: black;
         
     }
     
@@ -107,15 +113,20 @@
     /* left sidebar  */
     
     .dashboard-container{
+        height: 92vh;
         display: grid;
         grid-template-columns: 1fr 1.5fr 1fr;
+    }
+
+    .portfolio{
+        overflow-y: scroll;
+        border-right: 20px solid #1f1f1f;
     }
 
     .account-info{
         background-color: rgb(10, 10, 10);
         padding: 5px 10px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom: 20px solid #1f1f1f;
     }
 
     .account-summary-title{
@@ -174,11 +185,10 @@
     }
 
     .positions{
+        overflow-y: auto;
         margin-top: 20px;
         background-color: rgb(10, 10, 10);
         padding: 5px 10px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
     }
 
     .positions-title{
