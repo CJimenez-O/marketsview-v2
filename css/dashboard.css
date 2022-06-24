@@ -127,6 +127,8 @@
         background-color: rgb(10, 10, 10);
         padding: 5px 10px;
         border-bottom: 20px solid #1f1f1f;
+        height: 280px;
+
     }
 
     .account-summary-title{
@@ -179,23 +181,30 @@
     .cash-titles h4{
         font-size: 14px;
     }
-    .cash-titles p {
-        font-size: 12px;
+    .account-cash-value {
+        font-size: 13px;
         color: #fff;
+    }
+    .profit{
+        font-size: 13px;
+        color: green;
+    }
+    .loss{
+        font-size: 13px;
+        color: red;
     }
 
     .positions{
         overflow-y: auto;
-        margin-top: 20px;
+        margin-top: 10px;
         background-color: rgb(10, 10, 10);
         padding: 5px 10px;
     }
 
     .positions-title{
-        
         display: flex;
         gap: 20px;
-        padding: 10px 20px;
+        padding: 5px 20px;
         color: rgb(184, 184, 184);
         font-weight: 400;
     }
@@ -208,11 +217,15 @@
 
     .position-table-titles{
         color: #999;
-        font-size: 14px;
+        font-size: 15px;
         display: grid;
         grid-template-columns: repeat(4 , 1fr);
         list-style: none;
         text-align: center;
+        border-top: 1px solid #999;
+        border-bottom: 1px solid #999;
+        padding: 5px 0;
+        margin: 10px 0;
     }
     .stock-position-row{
         color: #999;
@@ -221,6 +234,13 @@
         grid-template-columns: repeat(4 , 1fr);
         list-style: none;
         text-align: center;
+    }
+    .selected-symbol{
+        color: #fff;
+    }
+
+    .table-value{
+        font-size: 15px;
     }
     .odd{
         background-color:  #1f1f1f;
@@ -231,10 +251,158 @@
 
 
 
+
     .chart{
-        background-color: white;
+        background-color: black;
+        padding: 0 15px;
+        border-right: 20px solid #1f1f1f;
+        overflow: scroll;
     }
 
-    .news{
+    .stock-symbol{
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        padding:5px 0;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .quote{
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .actions{
+        display: flex;
+        justify-content: space-between;
+    }
+    .stock-name{
+        color: #fff;
+        width: 50%;
+        font-weight: 400;
+    }
+
+    .action-button{
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .sell{
+        margin-right: 20px;
         background-color: red;
+        color: black;
+    }
+    .buy{
+        background-color: green;
+        color: black;
+    }
+
+    .add-to-wl{
+        background-color: black;
+        border: none;
+        text-decoration: underline;
+        color: #fff;
+        padding: 10px 0;
+        cursor: pointer;
+    }
+
+    .stock-detail-table{
+        margin-top: 10px;
+    }
+
+    .stock-details{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-evenly;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .stock-detail-item{
+        display: flex;
+        gap: 30px;
+        color: white;
+        font-size: 12px;
+        padding: 5px 0;
+    }
+
+    .stock-detail-title{
+        font-weight: 400;
+        margin:auto;
+    }
+
+    .stock-detail-value{
+        margin: auto;
+        color: white;
+        font-size: 13px;
+    }
+
+    .stock-chart{
+        margin-top: 25px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 5px 5px;
+    }
+
+    .myChart{
+        color: #fff;
+    }
+
+
+
+
+   
+
+    .watchlists{
+        background-color: rgb(10, 10, 10);
+        padding: 5px 10px;
+        border-bottom: 20px solid #1f1f1f;
+        min-height: 225px;
+        max-height: 225px;
+        overflow:scroll ;
+    }
+
+    .watchlist-title{
+        display: flex;
+        gap: 20px;
+        padding: 5px 20px;
+        margin-top: 10px;
+        color: rgb(184, 184, 184);
+        font-weight: 400;
+    }
+
+    .stock-news{
+        display: flex;
+        justify-content: center;
+        padding: 5px 20px;
+        margin-top: 10px;
+        color: rgb(184, 184, 184);
+        font-weight: 400;
+    }
+
+    .stock-news-story-list{
+        color: #fff;
+        max-height: 300px;
+        overflow: scroll;
+    }
+
+    .news-story{
+        display: flex;
+        color: #fff;
+        justify-content: space-between;
+        margin: 15px 20px;
+        padding: 10px 20px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .news-title{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
     }

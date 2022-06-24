@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- google fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="/css/dashboard.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="/images/icon.png">
+    <title>Trading Dashboard</title>
 </head>
 <body>
 
@@ -104,65 +105,226 @@
                 <div class="cash-titles">
                     <div class="cash-title">
                         <h4>Cash</h4>
-                        <p>$50,000</p>
+                        <p class="account-cash-value">$50,000</p>
                     </div>
                     <div class="profit-title">
                         <h4>P/L Day $</h4>
-                        <p>$2,322</p>
+                        <p class="profit">$2,500</p>
                     </div>
                     <div class="profit-percent-title">
                         <h4>P/L Dat %</h4>
-                        <p>29%</p>
+                        <p class="profit">5%</p>
                     </div>
                 </div>
             </div>
             <div class="positions">
                 <h3 class="positions-title"> <i class="dollar-icon fas fa-money-bill"></i> All Account Positions </h3>
                 <ul class="position-table-titles">
-                    <li class="table-title">Symbol</li>
+                    <li class="table-title ">Symbol</li>
                     <li class="table-title">Mark</li>
                     <li class="table-title">% Change</li>
                     <li class="table-title">Volume</li>
                 </ul>
                 <ul class="stock-position-row odd">
-                    <li class="table-value">AAPL</li>
+                    <li class="table-value selected-symbol">AAPL</li>
                     <li class="table-value">$142.23</li>
                     <li class="table-value">3.04%</li>
                     <li class="table-value">14.3M</li>
                 </ul>
                 <ul class="stock-position-row even">
-                    <li class="table-value">AAPL</li>
+                    <li class="table-value selected-symbol">AAPL</li>
                     <li class="table-value">$142.23</li>
                     <li class="table-value">3.04%</li>
                     <li class="table-value">14.3M</li>
                 </ul>
                 <ul class="stock-position-row odd">
-                    <li class="table-value">AAPL</li>
+                    <li class="table-value selected-symbol">AAPL</li>
                     <li class="table-value">$142.23</li>
                     <li class="table-value">3.04%</li>
                     <li class="table-value">14.3M</li>
                 </ul>
                 <ul class="stock-position-row even">
-                    <li class="table-value">AAPL</li>
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
                     <li class="table-value">$142.23</li>
                     <li class="table-value">3.04%</li>
                     <li class="table-value">14.3M</li>
                 </ul>
             </div>
         </section>
+
+
         <section class="chart">
-            2
-            <div class="stock-info">
-                
+            <div class="searched-symbol">
+                <h3 class="stock-symbol"> AAL <span class="quote loss">142.23 -0.45(-3.44%)</span> </h3>
+                <div class="actions">
+                    <h3 class="stock-name">AMERICAN AIRLINES GROUP INC COM</h3>
+                    <div class="action-buttons">
+                        <button class="action-button sell">Sell</button>
+                        <button class="action-button buy">Buy</button>
+                    </div>
+                </div>
+                <button class="add-to-wl"> Add to Watchlist </button>
             </div>
+            <div class="stock-detail-table">
+                <ul class="stock-details ">
+                    <li class="stock-detail-item odd">
+                        <h3 class="stock-detail-title">Daily Open</h3>
+                        <p class="stock-detail-value">$145.56</p>
+                    </li>
+                    <li class="stock-detail-item odd">
+                        <h3 class="stock-detail-title">Daily Close</h3>
+                        <p class="stock-detail-value">$142.23</p>
+                    </li>
+                </ul>
+                <ul class="stock-details ">
+                    <li class="stock-detail-item even">
+                        <h3 class="stock-detail-title">Volume</h3>
+                        <p class="stock-detail-value">4.7M</p>
+                    </li>
+                    <li class="stock-detail-item even">
+                        <h3 class="stock-detail-title">Market Cap</h3>
+                        <p class="stock-detail-value">$2.7B</p>
+                    </li>
+                </ul>
+                <ul class="stock-details ">
+                    <li class="stock-detail-item odd">
+                        <h3 class="stock-detail-title">52 Week High</h3>
+                        <p class="stock-detail-value">$168.34</p>
+                    </li>
+                    <li class="stock-detail-item odd">
+                        <h3 class="stock-detail-title">52 Week Low</h3>
+                        <p class="stock-detail-value">$95.82</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="stock-chart">
+                <canvas id="myChart" width="400px" height="300px"></canvas>
+            </div>
+            
+            
+
         </section>
-        <section class="news">
-            3
-            <div class="watchlist"></div>
-            <div class="news"></div>
+        <section class="new-watchlist-sidebar">
+            <h3 class="watchlist-title"> <i class="dollar-icon fas fa-star"></i>Account Watchlist </h3>
+
+            <ul class="position-table-titles">
+                <li class="table-title ">Symbol</li>
+                <li class="table-title">Mark</li>
+                <li class="table-title">% Change</li>
+                <li class="table-title">Volume</li>
+            </ul>
+            <div class="watchlists">
+                
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row odd">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+                <ul class="stock-position-row even">
+                    <li class="table-value selected-symbol">AAPL</li>
+                    <li class="table-value">$142.23</li>
+                    <li class="table-value">3.04%</li>
+                    <li class="table-value">14.3M</li>
+                </ul>
+            </div>
+            <div class="news">
+                <h4 class="stock-news">
+                    Latest AAL News
+                </h4>
+                <ul class="stock-news-story-list">
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                    <li class="news-story">
+                        <a href="#" class="news-title">Multiple air carriers trim... </a> <span class="release">5h</span>
+                    </li>
+                </ul>
+            </div>
         </section>
 
     </div>
     
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script src="/js/simulation.js"></script>
 </body>
 </html>
