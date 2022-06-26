@@ -341,6 +341,7 @@
         margin: auto;
         color: white;
         font-size: 13px;
+        letter-spacing: .5px;
     }
 
     .stock-chart{

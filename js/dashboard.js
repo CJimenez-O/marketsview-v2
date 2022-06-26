@@ -1,9 +1,8 @@
-
-
-
 // collecting search input value 
 const searchBar = document.querySelector('.search-input');
 searchBar.addEventListener('keypress', function(e){
+
+    // after the enter key is press grab stock data entered and render data 
     if(e.keyCode == 13){
         const symbol = searchBar.value;
 
@@ -18,20 +17,32 @@ searchBar.addEventListener('keypress', function(e){
 	         return response.json();
             })
             .then(data => {
-
                 console.log(data);
+                // change company Name to search stock name 
+                let companyName = document.querySelector('.stock-name');
+                companyName.innerHTML = `${data.price.shortName}`;
                 
-                // var li = document.createElement('p');
-                // li.textContent = `${data.symbol} --- ${data.price.regularMarketPrice.raw}  `;
-                // li.classList.add('portListing');
-                // watchList.appendChild(li);
+                //if daily stock change is less than 0 than add PROFIT class else add LOSS classname
+                let companySymbol = document.querySelector('.stock-symbol');
+                let change = parseFloat(data.price.regularMarketChange.fmt);
+                if (change > 0){
+                    companySymbol.innerHTML = `${data.symbol} <span class="quote profit"> ${data.price.regularMarketPrice.fmt}  ${data.price.regularMarketChange.fmt}(${data.price.regularMarketChangePercent.fmt})</span>`;
+                }else{
+                    companySymbol.innerHTML = `${data.symbol} <span class="quote loss"> ${data.price.regularMarketPrice.fmt}  ${data.price.regularMarketChange.fmt}(${data.price.regularMarketChangePercent.fmt})</span>`;
+                }
+                // adding data to stock info table 
+                let obj = data.defaultKeyStatistics;   // defining object to access 52WeekChange 
+                document.querySelector('.wk-change').innerHTML = `${obj["52WeekChange"].fmt}`;
+                document.querySelector('.avg-vol').innerHTML = `${data.summaryDetail.averageVolume.fmt}`;
+                document.querySelector('.c-shares-short').innerHTML = `${obj.sharesShort.fmt}`;
+                document.querySelector('.prev-mon-s-s').innerHTML = `${obj.sharesShortPriorMonth.fmt}`;
+                document.querySelector('.market-cap').innerHTML = `${data.summaryDetail.marketCap.fmt}`;
+                document.querySelector('.pe-ratio').innerHTML = `${data.summaryDetail.trailingPE.fmt}`;
             })
             .catch(err => {
                 console.error('API call not responding please refresh.....');
             }); 
-        
     };
-
 })
 
 /////////////////////////
@@ -49,9 +60,7 @@ const myChart = new Chart(ctx, {
             color: 'rgb(255, 255, 255)',
         }]
     },
-   
     options: {
-        
         scales: {
             y: {
                 beginAtZero: false
