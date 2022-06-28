@@ -5,6 +5,14 @@ searchBar.addEventListener("keypress", function (e) {
   if (e.keyCode == 13) {
     const symbol = searchBar.value;
 
+
+    // grab news stories from API
+    getNews(symbol);
+    // get chart data from searched symbol
+    updateChart(symbol);
+
+
+    // update stock table details such as 52 wk chng, avg volume ect.
     fetch(
       `https://rapidapi.p.rapidapi.com/stock/v2/get-summary?symbol=${symbol}&region=US`,
       {
@@ -20,7 +28,6 @@ searchBar.addEventListener("keypress", function (e) {
         return response.json();
       })
       .then((data) => {
-        // console.log(data);
         // change company Name to search stock name
         let companyName = document.querySelector(".stock-name");
         companyName.innerHTML = `${data.price.shortName}`;
@@ -63,39 +70,125 @@ searchBar.addEventListener("keypress", function (e) {
         console.error("API call not responding please refresh.....");
       });
 
-    // grab news stories from API
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "675e232180msh684db82c43224d9p122709jsne5c627d38df4",
-        "X-RapidAPI-Host": "stock-market-data.p.rapidapi.com",
-      },
-    };
+    
 
-    fetch(
-      `https://stock-market-data.p.rapidapi.com/stock/buzz/news?ticker_symbol=${symbol}`,
-      options
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        // grabs news title and URL and updates news
-        for (let i = 0; i <= 9; i++) {
-          // grabs title and shortens to first 37 charaters
-          let title = res.news[i].title;
-          let shortTitle = title.slice(0, 37);
-          shortTitle += "...";
-          document.querySelector(
-            `.news-${i}`
-          ).innerHTML = `<a href="${res.news[i].url}" target="_blank" class="news-title">${shortTitle}</a> `;
-        }
-      })
-      .catch((err) => console.error(err));
   }
 });
 
-/////////////////////////
-//  add chart to page //
-////////////////////////
+
+
+////////////////////////////
+//  update news to page ///
+//////////////////////////
+function getNews(sym){
+     // grabs 10 news stories from API
+     const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "675e232180msh684db82c43224d9p122709jsne5c627d38df4",
+          "X-RapidAPI-Host": "stock-market-data.p.rapidapi.com",
+        },
+      };
+  
+      fetch(
+        `https://stock-market-data.p.rapidapi.com/stock/buzz/news?ticker_symbol=${sym}`,
+        options
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          // grabs news title and URL and updates news
+          for (let i = 0; i <= 9; i++) {
+            // grabs title and shortens to first 37 charaters then add ... to the end of string 
+            let title = res.news[i].title;
+            let shortTitle = title.slice(0, 37);
+            shortTitle += "...";
+            document.querySelector(
+              `.news-${i}`
+            ).innerHTML = `<a href="${res.news[i].url}" target="_blank" class="news-title">${shortTitle}</a> `;
+          }
+        })
+        .catch((err) => console.error(err));
+}
+
+////////////////////////////
+//  update chart to page //
+//////////////////////////
+
+function updateChart(sym) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "675e232180msh684db82c43224d9p122709jsne5c627d38df4",
+      "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
+    },
+  };
+
+  fetch(
+    `https://yh-finance.p.rapidapi.com/stock/v3/get-historical-data?symbol=${sym}&region=US`,
+    options
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      let dates = [];
+      let quotes = [];
+      // getting previous 100 days and converting time to MM DD and pushing to dates array
+      // grab 100 prev closing quotes of stock and adding to quotes array
+      for (let i = 100; i >= 1; i--) {
+        let time = res.prices[i].date + "000"; // adding 000 to end since API gives year of 1970
+        let parsedTime = new Date(parseInt(time)).toString(); // converting to string so date can sliced
+        dates.push(parsedTime.slice(4, 10));
+        quotes.push(parseFloat(res.prices[i].close).toFixed(2));
+      }
+
+      // removing old chart and loading new stock chart
+      document.querySelector(".stock-chart").innerHTML = "";
+      document.querySelector(
+        ".stock-chart"
+      ).innerHTML = `<canvas id="myChart" width="400px" height="300px"></canvas>`;
+
+      // change color based on prev 100 day performance 
+      function colorChange(){
+          if(quotes[99] - quotes[0] < 0){
+              return 'rgb(255, 0,0)';
+          }else{
+              return 'rgb(0,255,0)';
+          }
+      }
+
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: dates,
+          datasets: [
+            {
+              data: quotes,
+              borderColor: colorChange(), //changes color base on price
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false,
+            },
+          },
+          plugins: {
+            legend: {
+              display: false, // removes label on top of chart
+            },
+          },
+        },
+      });
+      // end of chart function
+    })
+    .catch((err) => console.error(err));
+}
+
+
+//  add chart to page on window load //
+
+// updateChart('aapl');
 
 const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
@@ -106,7 +199,6 @@ const myChart = new Chart(ctx, {
       {
         data: [12, 19, 3, 5, 2, 3],
         borderColor: "rgb(255, 0,0)", //changes color base on price
-        color: "rgb(255, 255, 255)",
       },
     ],
   },
