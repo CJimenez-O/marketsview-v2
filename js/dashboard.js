@@ -7,7 +7,7 @@ searchBar.addEventListener("keypress", function (e) {
 
 
     // grab news stories from API
-    getNews(symbol);
+    // getNews(symbol);
     // get chart data from searched symbol
     updateChart(symbol);
 
@@ -147,8 +147,9 @@ function updateChart(sym) {
       ).innerHTML = `<canvas id="myChart" width="400px" height="300px"></canvas>`;
 
       // change color based on prev 100 day performance 
+  
       function colorChange(){
-          if(quotes[99] - quotes[0] < 0){
+          if(quotes[99] - quotes[1] < 0){
               return 'rgb(255, 0,0)';
           }else{
               return 'rgb(0,255,0)';
