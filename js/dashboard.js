@@ -5,9 +5,11 @@ searchBar.addEventListener("keypress", function (e) {
   if (e.keyCode == 13) {
     const symbol = searchBar.value;
 
+    // clear search box value;
+    searchBar.value = '';
 
     // grab news stories from API
-    // getNews(symbol);
+    getNews(symbol);
     // get chart data from searched symbol
     updateChart(symbol);
 
